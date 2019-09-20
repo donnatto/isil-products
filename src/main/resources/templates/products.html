@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Listado de Productos</title>
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron"
+         style="background: url(https://images.unsplash.com/photo-1480603509257-c0bfc8135e13?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80)">
+        <div class="container">
+            <h1 class="text-white">Listado de Productos</h1>
+            <div class="btn-group">
+                <a th:href="@{/products/add}" class="btn btn-outline-light">Agregar productos</a>
+                <a th:href="@{/}" class="btn btn-outline-light">Atras</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive" th:switch="products">
+        <table class="table table-hover table-dark">
+            <thead>
+            <tr>
+                <th scope="col">sku</th>
+                <th scope="col">name</th>
+                <th scope="col">stock</th>
+                <th scope="col">price</th>
+                <th scope="col">options</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product: ${products}">
+                <th scope="row" th:text="${product.sku}"></th>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.stock}"></td>
+                <td th:text="${product.price}"></td>
+
+                <td>
+                    <div class="btn-group">
+                        <a th:href="@{/products/edit/{sku}(sku=${product.sku})}"
+                           class="btn btn-outline-light btn-sm">Editar</a>
+                        <a th:href="@{/products/delete/{sku}(sku=${product.sku})}" class="btn btn-outline-light btn-sm">Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

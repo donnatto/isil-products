@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" >
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Agregar Productos</title>
+</head>
+<body>
+    <div class="container">
+        <h3>Agregar Productos</h3>
+
+        <div>
+            <form action="#" method="post" th:object="${product}" th:action="@{/products/save}">
+                <div class="form-group">
+                    <label for="sku">sku</label>
+                    <input type="text" class="form-control" id="sku" placeholder="Ingrese el sku"
+                        th:field="*{sku}"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="name">name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Ingrese el nombre"
+                           th:field="*{name}"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="stock">stock</label>
+                    <input type="text" class="form-control" id="stock" placeholder="Ingrese el stock"
+                           th:field="*{stock}"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="price">price</label>
+                    <input type="text" class="form-control" id="price" placeholder="Ingrese el precio"
+                           th:field="*{price}"
+                    />
+                </div>
+
+                <button type="submit" class="btn btn-primary">Agregar Producto</button>
+                <a th:href="@{/products}" class="btn btn-danger">Atras</a>
+            </form>
+        </div>
+
+    </div>
+</body>
+</html>
